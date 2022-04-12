@@ -9,10 +9,8 @@ client.once('ready', () => {
 })
 
 client.on('ready', (client) => {
-    const guild = client.guilds.cache.get('732283820535054409')
-    //   const messageChannel: any = guild?.channels.cache.get('732283821046759527')
+    const guild = client.guilds.cache.get(`${process.env.GUILD}`)
     sendRandomMesage(guild)
-    //   messageChannel.send(`content`)
 })
 
 client.login(process.env.TOKEN)
@@ -31,7 +29,7 @@ function selectRandomMessage() {
 }
 
 function sendRandomMesage(guild: any) {
-    const messageChannel: any = guild?.channels.cache.get('732283821046759527')
+    const messageChannel: any = guild?.channels.cache.get(`${process.env.MESSAGE_CHANNEL}`)
     const message = messagesList[selectRandomMessage() - 1]
     messageChannel.send(message)
     const randomRepeatTime = generateRandomTime() * 1000
