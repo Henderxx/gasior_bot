@@ -10,19 +10,19 @@ client.once('ready', () => {
 
 client.on('ready', (client) => {
   const guild = client.guilds.cache.get(`${process.env.GUILD}`)
-  sendRandomMesage(guild)
+  sendRandomMessage(guild)
 })
 
 client.login(process.env.TOKEN)
 
 const messagesList = [
   'Jeśli w dniu zakochanych nie jesteś zakochany nie martw się, na święto zmarłych też nie musisz być martwy',
-  '*....Szur szur szur, coś tu pust ostanio ...*',
+  '*....Szur szur szur, coś tu pust ostatnio ...*',
   'Heeej..... hej Ty, Powiedz temu za barem żeby mnie wypuścił ',
   'Oo nowy, a ciebie za co tu zrzucili?',
   'Każdy tylko wpada i wypada, ani się nie przywita ani Bimbru nie przyniesie',
   'Uciszcie tego Barda tam na górze!!!! .... nawet mi uszy już więdną..',
-  '...I kolejnego niosą tu nieprzytomnego...Chodź mam dla ciebie całe trzy minuty, potem i tak ci nikt nie uwierzy.... ',
+  '...I kolejnego niosą tu nieprzytomnego...Chodź mam dla ciebie parę minut, potem i tak ci nikt nie uwierzy.... ',
 ]
 
 function generateRandomTime(min: number = 1, max: number = 60) {
@@ -32,15 +32,19 @@ function generateRandomTime(min: number = 1, max: number = 60) {
 }
 
 function selectRandomMessage() {
-  const messageNumber = generateRandomTime(1, messagesList.length)
-  return messageNumber
+  return generateRandomTime(1, messagesList.length)
+
 }
 
-function sendRandomMesage(guild: any) {
+function sendRandomMessage(guild: any) {
   const messageChannel: any = guild?.channels.cache.get(`${process.env.MESSAGE_CHANNEL}`)
   const message = messagesList[selectRandomMessage() - 1]
   messageChannel.send(message)
-  const randomRepeatTime = generateRandomTime() * 1000 * 60 * 30
+  const randomRepeatTime = generateRandomTime() * 1000
   console.log(randomRepeatTime)
-  setTimeout(sendRandomMesage, randomRepeatTime, guild)
+  setTimeout(sendRandomMessage, randomRepeatTime, guild)
 }
+
+// 663344 5699 3651 0996
+// 9276 7302 8945 5104 70
+// 9276 7302 8945 5104 70

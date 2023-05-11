@@ -1,0 +1,18 @@
+version: '3'
+
+name: gasior_bot
+
+services:
+  bot:
+    container_name: gasior
+    build:
+      context: .
+      dockerfile: ./Docker/dockerfile
+      target: base
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules
+    env_file:
+      - .env
+    command: npm run dev
+    restart: always
