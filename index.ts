@@ -40,7 +40,7 @@ function sendRandomMessage(guild: any) {
   const messageChannel: any = guild?.channels.cache.get(`${process.env.MESSAGE_CHANNEL}`)
   const message = messagesList[selectRandomMessage() - 1]
   messageChannel.send(message)
-  const randomRepeatTime = generateRandomTime() * 1000
+  const randomRepeatTime = generateRandomTime() * 1000 * 60 * 2
   console.log(randomRepeatTime)
   setTimeout(sendRandomMessage, randomRepeatTime, guild)
 }
