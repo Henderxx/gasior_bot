@@ -16,8 +16,13 @@ client.on('ready', (client) => {
     const guild = client.guilds.cache.get(`${process.env.GUILD}`)
     sendRandomMessage(guild)
 })
+try {
+    client.login(process.env.TOKEN)
+} catch (error) {
+    console.log(error)
+}
 
-client.login(process.env.TOKEN)
+
 
 const messagesList = [
     'Jeśli w dniu zakochanych nie jesteś zakochany nie martw się, na święto zmarłych też nie musisz być martwy',
